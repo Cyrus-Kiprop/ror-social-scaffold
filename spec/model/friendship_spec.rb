@@ -1,9 +1,9 @@
 require 'rails_helper'
 require_relative '../../app/models/friendship.rb'
 RSpec.describe Friendship do
-  let(:user_one) { User.new(email: 'example@gamil.com', password:'password', name:'John Doe', gravatar_url: 'www.gravatar_john_doe.com') }
+  let(:user_one) { User.new(email: 'example@gamil.com', password: 'password', name: 'John Doe', gravatar_url: 'www.gravatar_john_doe.com') }
 
-  let(:user_two) { User.new(email: 'example1@gamil.com', password:'password', name:'Erick Dier', gravatar_url: 'www.gravatar_erick_dier.com') }
+  let(:user_two) { User.new(email: 'example1@gamil.com', password: 'password', name: 'Erick Dier', gravatar_url: 'www.gravatar_erick_dier.com') }
 
   describe 'validation test' do
     describe 'user_id' do

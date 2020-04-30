@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true, length: { maximum: 20 }
+  validates :email, presence: true
+  validates :password, presence: true, length: { minimum: 6 }
 
   has_many :posts
   has_many :comments, dependent: :destroy
@@ -27,10 +29,15 @@ class User < ApplicationRecord
     inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
   end
 
-  def comfirm_friend_request(user)
-    friendship = inverse_friendships.find { |friend| friend.user == user }
-    friendships.confirmed = true
-    friendship.save
+  def confirm_friend_request?(user)
+    friend = inverse_friendships.find { |friendship| friendship.user == user }
+    if friend
+      friend.confirmed = true
+      friend.save
+      true
+    else
+      false
+    end
   end
 
   def friend?(user)
