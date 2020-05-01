@@ -40,7 +40,7 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
-Style/RaiseException:
+Lint/RaiseException:
   Enabled: false
 
 Layout/HashAlignment:
