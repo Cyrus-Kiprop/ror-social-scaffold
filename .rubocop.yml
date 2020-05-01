@@ -42,6 +42,14 @@ Style/FrozenStringLiteralComment:
   EnforcedStyle: never
 Lint/RaiseException:
   Enabled: false
+Style/HashEachMethods:
+  Enabled: false
+Lint/StructNewOverride:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
