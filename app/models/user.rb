@@ -16,8 +16,8 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: :Friendship, foreign_key: :friend_id
 
   def friends
-    direct_friends = friendships.map { |friendship| friendship.friend if frienship.confirmed }
-    inverse_friends = inverse_friendships.map { |friendship| friendship.user if frienship.confirmed }
+    direct_friends = friendships.map { |friendship| friendship.friend if friendship.confirmed }
+    inverse_friends = inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
     (direct_friends + inverse_friends).compact
   end
 
