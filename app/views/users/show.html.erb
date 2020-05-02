@@ -1,5 +1,25 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <div class="d-flex ">
+
+    <h2 class="mr-3"><%= "Name: #{@user.name}" %></h2>
+
+    <% if @user.id == current_user.id%>
+      <span>Hello There!</span>
+    <%elsif current_user.friends.include?(@user) %>
+      <%= link_to 'Unfriend', friendships_destroy_path(id:@user.id), class: 'btn btn-outline-danger', method: :delete%>
+    <% elsif @incoming_requests.include?(@user) %>
+      <span class="">
+        <%= link_to 'Confirm friend', friendships_update_path(id: @user.id), method: :patch, class: 'btn btn-outline-success'  %>
+        <%=link_to 'Cancel Request', friendships_destroy_path(id:@user.id), class: 'btn btn-outline-warning', method: :delete  %>
+      </span>
+    <%elsif current_user.pending_friend_requests.include?(@user)%>
+      <span class="btn btn-info">Pending confirmation</span>
+      <%= link_to 'Cancel', friendships_destroy_path(id: @user.id), method: :delete, class: 'btn btn-outline-warning', method: :delete %>
+    <%else%>
+      <span><%= link_to 'add friend', friendships_path(id:@user.id), method: :post,  class: 'btn btn-success'%></span>
+    <% end %>
+  </div>
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
