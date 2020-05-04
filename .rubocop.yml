@@ -1,7 +1,7 @@
 AllCops:
   Exclude:
     - "db/**/*"
-    - "bin/*" 
+    - "bin/*"
     - "config/**/*"
     - "Guardfile"
     - "Rakefile"
@@ -11,7 +11,7 @@ AllCops:
   DisplayCopNames: true
 
 Layout/LineLength:
-  Max: 120
+  Max: 150
 Metrics/MethodLength:
   Include:
     - "app/controllers/*"
@@ -40,6 +40,16 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
+Lint/RaiseException:
+  Enabled: false
+Style/HashEachMethods:
+  Enabled: false
+Lint/StructNewOverride:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
