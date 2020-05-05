@@ -38,7 +38,7 @@ RSpec.describe Friendship do
         def user_one.id
           3
           end
-        expect(new_request.no_request_to_yourself(user_one,3)).to eql(false)
+        expect(new_request.no_request_to_yourself(user_one.id,3)).to eql(true)
       end
       it "should return false if the requestor's id and the reciever's id aren't similar" do
         def user_one.id
