@@ -4,15 +4,13 @@ class FriendshipsController < ApplicationController
   def show; end
 
   def create
-    @create_friend = current_user.friendships.build(confirmed: false, friend_id: params[:id])
 
     respond_to do |format|
-      if @create_friend.save
-        format.html { redirect_to :users, notice: 'Friend reques sent' }
+      if Friendship.new.unique_friendship?(current_user, params[:id])
+        format.html { redirect_to :users, notice: 'Friend request sent' }
         format.json { render :index, status: :created, location: @user }
       else
         format.html { render :index }
-        format.json { render json: @create_friend.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -21,6 +19,7 @@ class FriendshipsController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     user = User.find(params[:id])
+
 
     respond_to do |format|
       if current_user.confirm_friend_request?(user)

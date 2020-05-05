@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]) # this sould be scoped
     @posts = @user.posts.ordered_by_most_recent
     @incoming_requests = current_user.incoming_friend_requests
   end
