@@ -37,23 +37,23 @@ RSpec.describe Friendship do
       it 'should return true if you try to friend request yourself' do
         def user_one.id
           3
-          end
-        expect(new_request.no_request_to_yourself(user_one.id,3)).to eql(true)
+        end
+        expect(new_request.no_request_to_yourself(user_one.id, 3)).to eql(true)
       end
       it "should return false if the requestor's id and the reciever's id aren't similar" do
         def user_one.id
-        3
+          3
         end
-        expect(new_request.no_request_to_yourself(user_one,2)).to eql(false)
+        expect(new_request.no_request_to_yourself(user_one, 2)).to eql(false)
       end
     end
     describe 'unique_friendship' do
-     it 'should return true if a friend request is successfully sent' do
-      def user_one.id
-        3
+      it 'should return true if a friend request is successfully sent' do
+        def user_one.id
+          3
+        end
+        expect(new_request.unique_friendship?(user_one, 2)).to be_in([true, false])
       end
-      expect(new_request.unique_friendship?(user_one, 2)).to be_in([true, false])
-     end
     end
   end
 end

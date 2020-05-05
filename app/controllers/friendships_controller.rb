@@ -4,7 +4,6 @@ class FriendshipsController < ApplicationController
   def show; end
 
   def create
-
     respond_to do |format|
       if Friendship.new.unique_friendship?(current_user, params[:id])
         format.html { redirect_to :users, notice: 'Friend request sent' }
@@ -19,7 +18,6 @@ class FriendshipsController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     user = User.find(params[:id])
-
 
     respond_to do |format|
       if current_user.confirm_friend_request?(user)
